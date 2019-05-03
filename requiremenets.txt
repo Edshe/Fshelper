@@ -1,0 +1,4 @@
+ibm-cos-sdk==2.4.4
+boto3==1.9
+botocore==1.12
+
