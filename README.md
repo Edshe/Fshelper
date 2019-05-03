@@ -97,4 +97,3 @@ Front-end:
 
 Django-templates + vue.js
 
-
