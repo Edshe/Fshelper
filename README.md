@@ -35,7 +35,7 @@ How to install:
 -----
 
 Make sure that ```python 3.6```, ```virtualenv```, ```pip``` installed and updated.
-Also install ```virtualenvwrapper``` through pip.
+Also you can install ```virtualenvwrapper``` through pip.
 
 
 
@@ -49,51 +49,34 @@ git clone https://github.com/Edshe/Fshelper
 
 ```
 cd Fshelper
-mkvirtualenv dialogtest
-workon dialogtest
+mkvirtualenv fshelper
+workon fshelper
 pip install -r requirements.txt
 ```
 
-**Launch**
+**Usage**
 
 ```
-python manage.py runserver
+# Specifying your aws credentials
+params={
+    service_name='s3',
+    aws_access_key_id=your_aws_key_id,
+    aws_secret_access_key=your_aws_secret_access_key,
+    config=Config(
+        s3={'use_accelerate_endpoint': accelerate_endpoint}
+    ),
+    endpoint_url=endpoint_url
+}
+# Creating cloud directory instance
+aws = CloudDirectory(**params)
+
+# Getting a list of folders and files
+aws.ls_files()
+aws.ls_folders()
+
+# Finding all images
+aws.find(mask='*jpg').get('files')
+
+
 ```
-
-**Run tests**
-
-```
-python manage.py test
-```
-
-
-
-
-
-Apps:
--------------
-
-**Questionnaires**:
-	
-Main questionnaire models: **Questionnaire**, **Question**, **Choice**.
-Provides API for getting Questionnaires list, Questionnaire details, Question details Contains task for creating Questionnaires from json file. "data.json" - file example is in project folder. 
-
-**Users**:
-	
-Models: **User**
-Provides views for authorization and home page view.
-
-
-**Dialogs**:
-	
-Models: **Dialog**, **UserAnswer**
-Provides API for getting Dialogs list, Dialog details
-and API to create new UserAnswer
-
-
-
-Front-end:
--------------
-
-Django-templates + vue.js
 
