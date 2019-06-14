@@ -67,16 +67,27 @@ params={
     ),
     endpoint_url=endpoint_url  # for IBM
 }
+
 # Creating cloud directory instance
 aws = CloudDirectory(**params)
 
 # Getting a list of folders and files
+aws.ls()
 aws.ls_files()
 aws.ls_folders()
 
 # Finding all images
 aws.find(mask='*jpg').get('files')
 
+# Moving to next directory
+aws.cd('myfolder')
+
+# Reading and saving a file content
+file = aws.ls_files()[0]
+file.read()  # reading the file content to _file variable
+file.save()  # saving  the file content to aws
+
 
 ```
+Full list of methods you can see in abstract classes inside base.py
 
