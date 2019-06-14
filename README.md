@@ -65,7 +65,7 @@ params={
     config=Config(
         s3={'use_accelerate_endpoint': accelerate_endpoint}
     ),
-    endpoint_url=endpoint_url
+    endpoint_url=endpoint_url  # for IBM
 }
 # Creating cloud directory instance
 aws = CloudDirectory(**params)
